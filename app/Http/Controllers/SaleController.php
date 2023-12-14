@@ -9,4 +9,7 @@ class SaleController extends Controller
     public function index(){
         return view('Backend.Pages.Sales.index');
     }
+    public function upload(){
+         return view('Backend.Pages.Sales.Upload');
+    }
 }

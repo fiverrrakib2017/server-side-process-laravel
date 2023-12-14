@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/sale/list',[saleController::class,'index'])->name('sale.list');
 
 Route::get('/sale/create',[saleController::class,'create'])->name('sale.create');
+
+Route::get('/Sale/file-upload',[saleController::class,'upload'])->name('sale.upload');
