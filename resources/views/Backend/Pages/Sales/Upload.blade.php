@@ -15,8 +15,8 @@
       <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
           <a class="breadcrumb-item" href="index.html">Dashboard</a>
-          <a class="breadcrumb-item" href="#">Brand</a>
-          <span class="breadcrumb-item active">Create</span>
+          <a class="breadcrumb-item" href="#">Sale File</a>
+          <span class="breadcrumb-item active">Upload</span>
         </nav>
       </div><!-- br-pageheader -->
 <div class="" style="padding: 0px !important;"> 
@@ -27,14 +27,14 @@
       <h6>Upload CSV File</h6>
     </div>
     <div class="card-body">
-      <form method="post" action="#" enctype="multipart/form-data">
+      <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="">Upload File</label>
-          <input  type="file" name="file" class="form-control">
+          <input  type="file" name="file" class="form-control" accept=".csv">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-success">Update Now</button>
+          <button type="submit" class="btn btn-success">Upload Now</button>
           <button type="submit" class="btn btn-danger">Back</button>
         </div>
       </form>

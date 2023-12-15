@@ -18,26 +18,26 @@
         <nav class="breadcrumb pd-0 mg-0 tx-12">
           <a class="breadcrumb-item" href="index.html">Dashboard</a>
           <a class="breadcrumb-item" href="#">Product</a>
-          <span class="breadcrumb-item active">Brand</span>
+          <span class="breadcrumb-item active">Sale</span>
         </nav>
       </div><!-- br-pageheader -->
 <div class="br-section-wrapper" style="padding: 0px !important;"> 
   <div class="table-wrapper">
     <div class="card">
       <div class="card-header">
-        <a  href="#" class="btn btn btn-success">Add New Brand</a>
+        <a  href="#" class="btn btn btn-success">Add New Sale</a>
       </div>
       <div class="card-body">
       <table id="datatable1" class="table display responsive nowrap">
       <thead>
         <tr>
           <th class="">No.</th>
-          <th class="">Brand Name</th>
-          <th class="">Image</th>
-          <th class="">Slug</th>
-          <th class="">Status</th>
-          <th class="">Create Date</th>
-          <th class="">Action</th>
+          <th class="">Region</th>
+          <th class="">Country</th>
+          <th class="">Item Type</th>
+          <th class="">Sales Channel </th>
+          <th class="">Order Priority</th>
+          <th class="">Order Date</th>
         </tr>
       </thead>
       <tbody>
@@ -50,7 +50,9 @@
   </div><!-- table-wrapper -->
 </div><!-- br-section-wrapper -->
 
-
+<div id="custom-spinner" class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
 @endsection
 
 @section('script')
@@ -65,20 +67,35 @@
     <script>
       $(function(){
         'use strict';
-
+        var customSpinner = $('#custom-spinner');
+            customSpinner.hide();
         $('#datatable1').DataTable({
           responsive: true,
+          processing: true,
+          serverSide: true,
+           ajax: '{{ route('sales.data') }}',
+         beforeSend: function () {
+              // Show Bootstrap spinner before AJAX request
+              customSpinner.show();
+          },
+          complete: function () {
+              // Hide Bootstrap spinner after AJAX request
+              customSpinner.hide();
+          },
           language: {
-            searchPlaceholder: 'Search...',
+            searchPlaceholder: 'Search Now',
             sSearch: '',
             lengthMenu: '_MENU_ items/page',
-          }
-        });
-
-        $('#datatable2').DataTable({
-          bLengthChange: false,
-          searching: false,
-          responsive: true
+          },
+          columns: [
+            { data: 'id', name: 'id' },
+            { data: 'Region', name: 'Region' },
+            { data: 'Country', name: 'Country' },
+            { data: 'Item Type', name: 'Item Type' },
+            { data: 'Sales Channel', name: 'Sales Channel' },
+            { data: 'Order Priority', name: 'Order Priority' },
+            { data: 'Order Date', name: 'Order Date' },
+        ],
         });
 
         // Select2

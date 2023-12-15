@@ -10,7 +10,7 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="{{ route('sale.upload') }}" class="br-menu-link {{ Route::is('sale.upload') ? 'active' : '' }} ">
+          <a href="{{ route('sale.upload.index') }}" class="br-menu-link {{ Route::is('sale.upload.index') ? 'active' : '' }} ">
             <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
             <span class="menu-item-label">Sale File Upload</span>
           </a>
